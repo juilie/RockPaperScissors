@@ -10,13 +10,13 @@ document.body.appendChild(canvas);
 let button = document.createElement('button')
 button.innerText = "New Game"
 button.onclick = () => {
-    init()
+    initializeGame()
 };
 document.body.appendChild(button)
 
 // Game Settings
-const playerAmount = 18
-const movementSpeed = 1
+const numOfPlayers = 18
+const playerSpeed = .5
 const playerSize = 50
 let players = []
 
@@ -25,13 +25,13 @@ let sketch = canvas.getContext("2d");
 
 // create sprites
 let rockImg = new Image(playerSize, playerSize)
-rockImg.src = 'https://raw.githubusercontent.com/juilie/RockPaperScissors/421305cbbcd7a8c0ffc938a3062da43460ae046a/assets/rock.png'
+rockImg.src = './assets/rock.png'
 
 let paperImg = new Image(playerSize, playerSize)
-paperImg.src = 'https://raw.githubusercontent.com/juilie/RockPaperScissors/421305cbbcd7a8c0ffc938a3062da43460ae046a/assets/paper.png'
+paperImg.src = './assets/paper.png'
 
 let scissorsImg = new Image(playerSize, playerSize)
-scissorsImg.src = 'https://raw.githubusercontent.com/juilie/RockPaperScissors/421305cbbcd7a8c0ffc938a3062da43460ae046a/assets/scissors.png'
+scissorsImg.src = './assets/scissors.png'
 
 // Describe qualities of each player type
 const playerTypes = {
@@ -39,31 +39,28 @@ const playerTypes = {
         name: "Rock",
         target: "Scissors",
         enemy: "Paper",
-        sound: "https://raw.githubusercontent.com/juilie/RockPaperScissors/421305cbbcd7a8c0ffc938a3062da43460ae046a/assets/paper.wav",
+        sound: "./assets/paper.wav",
         image: rockImg
     },
     "Paper": {
         name: "Paper",
         target: "Rock",
         enemy: "Scissors",
-        sound: "https://raw.githubusercontent.com/juilie/RockPaperScissors/421305cbbcd7a8c0ffc938a3062da43460ae046a/assets/scissors.wav",
+        sound: "./assets/scissors.wav",
         image: paperImg
     },
     "Scissors": {
         name: "Scissors",
         target: "Paper",
         enemy: "Rock",
-        sound: "https://raw.githubusercontent.com/juilie/RockPaperScissors/421305cbbcd7a8c0ffc938a3062da43460ae046a/assets/rock.wav",
+        sound: "./assets/rock.wav",
         image: scissorsImg
     }
 }
 
-function init() {
-    // reset player array
-    players = []
-
+function initializeGame() {
     // Create an equal amount of rocks, papers, and scissors
-    for (let i = 0; i < playerAmount; i++) {
+    for (let i = 0; i < numOfPlayers; i++) {
         players[i] = new Player(Object.values(playerTypes)[i % 3])
     }
 }
@@ -115,14 +112,14 @@ class Player {
             }
         });
 
+        // Used to ensure player doesn't move outside canvas
         let X_IN_BOUNDS = this.x > 0 && this.x < canvasWidth - playerSize;
         let Y_IN_BOUNDS = this.y > 0 && this.y < canvasHeight - playerSize;
-
-        // Move towards closest target
+        
         if (closestTarget && X_IN_BOUNDS && Y_IN_BOUNDS) {
-
-            this.x < closestTarget.x ? this.x += movementSpeed : this.x -= movementSpeed
-            this.y < closestTarget.y ? this.y += movementSpeed : this.y -= movementSpeed
+            // Move towards closest target
+            this.x < closestTarget.x ? this.x += playerSpeed : this.x -= playerSpeed
+            this.y < closestTarget.y ? this.y += playerSpeed : this.y -= playerSpeed
 
         } else {
             // If there are not targets
@@ -138,10 +135,10 @@ class Player {
 
         // To check for collision between 2 rectangles
         // Ensure there is no gap between any of the 4 sides
-        if (this.x + playerSize >= target.x && // r1 right edge past r2 left
-            this.x <= target.x + playerSize && // r1 left edge past r2 right
-            this.y + playerSize >= target.y && // r1 top edge past r2 bottom
-            this.y <= target.y + playerSize) { // r1 bottom edge past r2 top
+        if (this.x + playerSize >= target.x && // player right edge past target left
+            this.x <= target.x + playerSize && // player left edge past target right
+            this.y + playerSize >= target.y && // player top edge past target bottom
+            this.y <= target.y + playerSize) { // player bottom edge past target top
             return true;
         }
         return false;
