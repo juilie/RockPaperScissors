@@ -1,0 +1,17 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    background-color: papayawhip;
+}
+
+canvas {
+    background-color: black;
+}
+
+button {
+    padding: 20px;
+    font-size: larger;
+    background-color: rgb(186, 242, 186);
+}
