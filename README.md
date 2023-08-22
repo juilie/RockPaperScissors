@@ -1,6 +1,6 @@
 # RockPaperScissors
 A Rock Paper Scissors Simulator inspired by a tiktok I saw once
-[Play Game](juilie.github.io/RockPaperScissors/ "Rock, Paper, Scissors Simulator)
+[Play Game](https://juilie.github.io/RockPaperScissors/ "Rock, Paper, Scissors Simulator")
 
 ## Game play
 - 18 players enter the arena
