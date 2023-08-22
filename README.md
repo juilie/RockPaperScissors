@@ -1,5 +1,6 @@
 # RockPaperScissors
 A Rock Paper Scissors Simulator inspired by a tiktok I saw once
+
 [Play Game](https://juilie.github.io/RockPaperScissors/ "Rock, Paper, Scissors Simulator")
 
 ## Game play
