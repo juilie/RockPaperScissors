@@ -1,10 +1,10 @@
 # RockPaperScissors
-A Rock Paper Scissors Simulator inspired by many tiktoks
+A Rock Paper Scissors Simulator inspired by a tiktok I saw once
 
-18 players enter the arena
+## Game play
+- 18 players enter the arena
+- When one player "beats" another, the defeated player turns into its enemy
+- Rock beats scissors, scissors beat paper, paper beats rock
 
-When one player "beats" another, the defeated player turns into its enemy
-
-Rock beats scissors, scissors beat paper, paper beats rock
-
-Click the "New game" button to start a new game :)
+## Instructions
+Click the "New game" button to start a new game and enjoy:)
