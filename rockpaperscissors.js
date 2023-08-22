@@ -16,7 +16,7 @@ document.body.appendChild(button)
 
 // Game Settings
 const numOfPlayers = 18
-const playerSpeed = .5
+const playerSpeed = .25
 const playerSize = 50
 let players = []
 
